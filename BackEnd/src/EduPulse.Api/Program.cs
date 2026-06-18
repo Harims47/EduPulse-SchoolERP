@@ -115,6 +115,7 @@ builder.Services.AddAuthenticationModule();
 builder.Services.AddAcademicsModule();
 builder.Services.AddStaffModule();
 builder.Services.AddStudentModule();
+builder.Services.AddAttendanceModule();
 
 var app = builder.Build();
 

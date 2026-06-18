@@ -11,6 +11,7 @@ using EduPulse.Core.Dtos.Academics;
 using EduPulse.Core.Dtos.Staff;
 using EduPulse.Core.Dtos.Students;
 using EduPulse.Core.Dtos.Guardians;
+using EduPulse.Core.Dtos.Attendance;
 using EduPulse.Core.Validation;
 using EduPulse.Api.Infrastructure.Authentication;
 
@@ -93,6 +94,21 @@ namespace EduPulse.Api.Infrastructure
             services.AddTransient<IValidator<UpdateGuardianRequest>, UpdateGuardianRequestValidator>();
             services.AddTransient<IValidator<LinkGuardianRequest>, LinkGuardianRequestValidator>();
             services.AddTransient<IValidator<UpdateRelationshipRequest>, UpdateRelationshipRequestValidator>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddAttendanceModule(this IServiceCollection services)
+        {
+            // Repositories
+            services.AddScoped<IAttendanceRepository, AttendanceRepository>();
+
+            // Services
+            services.AddScoped<IAttendanceService, AttendanceService>();
+
+            // Validators
+            services.AddTransient<IValidator<MarkAttendanceRequest>, MarkAttendanceRequestValidator>();
+            services.AddTransient<IValidator<AttendanceEntryRequest>, AttendanceEntryRequestValidator>();
 
             return services;
         }
