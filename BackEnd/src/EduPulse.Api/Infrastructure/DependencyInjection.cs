@@ -8,6 +8,7 @@ using EduPulse.Core.Repositories.Implementations;
 using EduPulse.Core.Services.Interfaces;
 using EduPulse.Core.Services.Implementations;
 using EduPulse.Core.Dtos.Academics;
+using EduPulse.Core.Dtos.Staff;
 using EduPulse.Core.Validation;
 using EduPulse.Api.Infrastructure.Authentication;
 
@@ -37,13 +38,36 @@ namespace EduPulse.Api.Infrastructure
         {
             // Repositories
             services.AddScoped<IAcademicYearRepository, AcademicYearRepository>();
+            services.AddScoped<IClassRepository, ClassRepository>();
+            services.AddScoped<ISectionRepository, SectionRepository>();
 
             // Services
             services.AddScoped<IAcademicYearService, AcademicYearService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<ISectionService, SectionService>();
 
             // Validators
             services.AddTransient<IValidator<CreateAcademicYearRequest>, CreateAcademicYearRequestValidator>();
             services.AddTransient<IValidator<UpdateAcademicYearRequest>, UpdateAcademicYearRequestValidator>();
+            services.AddTransient<IValidator<CreateClassRequest>, CreateClassRequestValidator>();
+            services.AddTransient<IValidator<UpdateClassRequest>, UpdateClassRequestValidator>();
+            services.AddTransient<IValidator<CreateSectionRequest>, CreateSectionRequestValidator>();
+            services.AddTransient<IValidator<UpdateSectionRequest>, UpdateSectionRequestValidator>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddStaffModule(this IServiceCollection services)
+        {
+            // Repositories
+            services.AddScoped<IStaffRepository, StaffRepository>();
+
+            // Services
+            services.AddScoped<IStaffService, StaffService>();
+
+            // Validators
+            services.AddTransient<IValidator<CreateStaffRequest>, CreateStaffRequestValidator>();
+            services.AddTransient<IValidator<UpdateStaffRequest>, UpdateStaffRequestValidator>();
 
             return services;
         }

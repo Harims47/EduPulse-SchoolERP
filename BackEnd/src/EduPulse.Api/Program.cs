@@ -113,6 +113,7 @@ builder.Services.AddHealthChecks();
 // 7. Register Module Dependencies
 builder.Services.AddAuthenticationModule();
 builder.Services.AddAcademicsModule();
+builder.Services.AddStaffModule();
 
 var app = builder.Build();
 
