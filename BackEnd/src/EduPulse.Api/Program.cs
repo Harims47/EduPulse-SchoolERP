@@ -114,6 +114,7 @@ builder.Services.AddHealthChecks();
 builder.Services.AddAuthenticationModule();
 builder.Services.AddAcademicsModule();
 builder.Services.AddStaffModule();
+builder.Services.AddStudentModule();
 
 var app = builder.Build();
 

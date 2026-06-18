@@ -9,6 +9,8 @@ using EduPulse.Core.Services.Interfaces;
 using EduPulse.Core.Services.Implementations;
 using EduPulse.Core.Dtos.Academics;
 using EduPulse.Core.Dtos.Staff;
+using EduPulse.Core.Dtos.Students;
+using EduPulse.Core.Dtos.Guardians;
 using EduPulse.Core.Validation;
 using EduPulse.Api.Infrastructure.Authentication;
 
@@ -68,6 +70,29 @@ namespace EduPulse.Api.Infrastructure
             // Validators
             services.AddTransient<IValidator<CreateStaffRequest>, CreateStaffRequestValidator>();
             services.AddTransient<IValidator<UpdateStaffRequest>, UpdateStaffRequestValidator>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddStudentModule(this IServiceCollection services)
+        {
+            // Repositories
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IGuardianRepository, GuardianRepository>();
+            services.AddScoped<IStudentGuardianRepository, StudentGuardianRepository>();
+
+            // Services
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IGuardianService, GuardianService>();
+            services.AddScoped<IStudentGuardianService, StudentGuardianService>();
+
+            // Validators
+            services.AddTransient<IValidator<CreateStudentRequest>, CreateStudentRequestValidator>();
+            services.AddTransient<IValidator<UpdateStudentRequest>, UpdateStudentRequestValidator>();
+            services.AddTransient<IValidator<CreateGuardianRequest>, CreateGuardianRequestValidator>();
+            services.AddTransient<IValidator<UpdateGuardianRequest>, UpdateGuardianRequestValidator>();
+            services.AddTransient<IValidator<LinkGuardianRequest>, LinkGuardianRequestValidator>();
+            services.AddTransient<IValidator<UpdateRelationshipRequest>, UpdateRelationshipRequestValidator>();
 
             return services;
         }
