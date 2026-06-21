@@ -311,7 +311,7 @@ All screens operate within a responsive shell (`AdminLayout`, `TeacherLayout`, `
   - `Reset Sheet` (Clears filters and selections)
 
 ### 8.2. Screen Name: `StudentAttendanceHistory`
-* **Purpose:** Review individual student historical daily daily logs and statistics.
+* **Purpose:** Review individual student historical daily logs and statistics.
 * **User Role:** `SchoolAdmin`, `Teacher`, `Parent`
 * **Navigation Location:** Student Directory ──► View Student Profile ──► Click Attendance History tab (`/students/{id}/attendance-history`)
 * **Required Actions:**
